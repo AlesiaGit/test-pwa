@@ -1,0 +1,20 @@
+html {
+  color: #222222;
+}
+
+.inputContainer {
+  margin-top: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+label {
+  font-weight: 600;
+  margin-right: 10px;
+  color: #444444;
+}
+
+button {
+  margin-left: 10px;
+}
