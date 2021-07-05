@@ -1,5 +1,6 @@
 const strings = {
-  login: 'Login using phone',
+  login: 'Login',
+  logout: 'Logout',
   confirm: 'Confirm',
   sendCode: 'Send code',
   hello: (type) => {

@@ -1,5 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import {
+  cfaSignIn,
+  cfaSignInPhoneOnCodeSent,
+} from 'capacitor-firebase-auth';
 import firebase from 'firebase';
 import 'firebase/auth';
 import firebaseConfig from '../utils/firebaseConfig';
@@ -18,38 +22,61 @@ const AuthForm = () => {
   const history = useHistory();
   const [code, setCode] = useState(null);
   const [codeFieldEnabled, enableCodeField] = useState(false);
-  const [confirmation, setConfirmation] = useState(null);
+  const [verificationId, setVerificationId] = useState(null);
+  // const [confirmation, setConfirmation] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      'recaptcha-container',
-      {
-        size: 'invisible',
-        callback: function () {
-          onFinish();
-        },
-      },
-    );
+    // //react.js implementation
+    // window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    //   'recaptcha-container',
+    //   {
+    //     size: 'invisible',
+    //     callback: function () {
+    //       onFinish();
+    //     },
+    //   },
+    // );
+
+    console.log('verification Id->', verificationId);
   });
 
-  const onFinish = () => {
-    var appVerifier = window.recaptchaVerifier;
-    app
-      .auth()
-      .signInWithPhoneNumber('+16505551234', appVerifier)
-      .then(function (confirmation) {
-        setConfirmation(confirmation);
+  const sendCode = () => {
+    cfaSignIn('phone', { phone: '+16505551234' }).subscribe(
+      (user) => {
+        console.log(user.phoneNumber);
         enableCodeField(true);
-      })
-      .catch(function (error) {
-        console.log('error2->', error);
-      });
+      },
+    );
+    cfaSignInPhoneOnCodeSent().subscribe(async (verificationId) => {
+      console.log('cfaSignInPhoneOnCodeSent');
+      setVerificationId(verificationId);
+      console.log(verificationId);
+      enableCodeField(true);
+    });
+
+    // //react.js implementation
+    // var appVerifier = window.recaptchaVerifier;
+    // app
+    //   .auth()
+    //   .signInWithPhoneNumber('+16505551234', appVerifier)
+    //   .then(function (confirmation) {
+    //     setConfirmation(confirmation);
+    //     enableCodeField(true);
+    //   })
+    //   .catch(function (error) {
+    //     console.log('error2->', error);
+    //   });
   };
 
   function confirmCode() {
-    confirmation
-      .confirm(code)
+    var credential = firebase.auth.PhoneAuthProvider.credential(
+      verificationId,
+      code,
+    );
+    app
+      .auth()
+      .signInWithCredential(credential)
       .then(function () {
         history.push({
           pathname: '/',
@@ -59,20 +86,34 @@ const AuthForm = () => {
       .catch(function (error) {
         setError(error?.message || 'something went wrong');
       });
+
+    // //react.js implementation
+    // confirmation
+    //   .confirm(code)
+    //   .then(function () {
+    //     history.push({
+    //       pathname: '/',
+    //       state: { authorized: true },
+    //     });
+    //   })
+    //   .catch(function (error) {
+    //     setError(error?.message || 'something went wrong');
+    //   });
   }
 
   return (
     <div>
-      <h2>Test phone auth form with recaptcha</h2>
+      <h2>Auth form with recaptcha</h2>
+      <label>Phone number</label>
       <div className="inputContainer">
-        <label>Phone number</label>
         <IntlTelInput preferredCountries={['us']} />
-        <button onClick={onFinish}>{strings.sendCode}</button>
+        <button onClick={sendCode}>{strings.sendCode}</button>
       </div>
+      <p>Verification id: {verificationId}</p>
       {codeFieldEnabled && (
         <div>
+          <label>Confirmation code</label>
           <div className="inputContainer">
-            <label>Confirmation code</label>
             <OtpInput value={code} onChange={setCode} numInputs={6} />
             <button onClick={confirmCode}>{strings.confirm}</button>
           </div>

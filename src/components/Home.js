@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import strings from './strings';
 
 import { AUTHORIZED, UNAUTHORIZED } from './constants';
+import strings from './strings';
+
 const Home = () => {
   const location = useLocation();
   const history = useHistory();
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   useEffect(() => {
     setUser(location?.state?.authorized);
   }, [location]);
@@ -20,15 +21,15 @@ const Home = () => {
     });
   }
 
-  console.log('user->', user);
-
   return (
     <div>
       <h2>{strings.hello(user ? AUTHORIZED : UNAUTHORIZED)}</h2>
       {!user ? (
-        <Link to="/form">{strings.login}</Link>
+        <Link to="/form">
+          <button>{strings.login}</button>
+        </Link>
       ) : (
-        <button onClick={logout}>logout</button>
+        <button onClick={logout}>{strings.logout}</button>
       )}
     </div>
   );

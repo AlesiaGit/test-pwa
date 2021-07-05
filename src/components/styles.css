@@ -1,15 +1,16 @@
 html {
   color: #222222;
+  flex: 1;
 }
 
 .inputContainer {
-  margin-top: 20px;
   display: flex;
   align-content: center;
   justify-content: center;
 }
 
 label {
+  margin-top: 20px;
   font-weight: 600;
   margin-right: 10px;
   color: #444444;

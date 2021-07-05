@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>979178375166-3f1oocop26t5ouimuf4pc6u098u0s9v4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.979178375166-3f1oocop26t5ouimuf4pc6u098u0s9v4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCV5G1xRj9P8UXyeSo7SkPLnLOVgZhJHs4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>979178375166</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.capcaptcha.app</string>
+	<key>PROJECT_ID</key>
+	<string>test-pwa-f0d45</string>
+	<key>STORAGE_BUCKET</key>
+	<string>test-pwa-f0d45.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:979178375166:ios:865e5b483cdbec3c05a2af</string>
+</dict>
+</plist>
