@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "979178375166",
+    "project_id": "test-pwa-f0d45",
+    "storage_bucket": "test-pwa-f0d45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979178375166:android:c6e0f644e56b29bc05a2af",
+        "android_client_info": {
+          "package_name": "com.capcaptcha.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979178375166-3vr64lhi0lvjl54junio3r7ecptf97fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjqsM0KaRHkdsA5j-agvdNsCMeeL7ZaXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979178375166-3vr64lhi0lvjl54junio3r7ecptf97fe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "979178375166-3f1oocop26t5ouimuf4pc6u098u0s9v4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.capcaptcha.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
