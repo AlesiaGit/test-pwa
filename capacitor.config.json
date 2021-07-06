@@ -17,7 +17,7 @@
         "contentInset": "always"
   },
   "server": {
-    "url": "http://192.168.8.173:3000",
+    "url": "https://alesiagit.github.io/test-pwa/",
     "cleartext": true
   }
 }
